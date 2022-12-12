@@ -1,0 +1,45 @@
+List basic linux commands and their use
+
+ls - list directories
+pwd - Print working directory
+cd - navigate through directories
+mkdir - create directories
+mv - Move or rename files
+cp - copying files
+rm - Delete files or directorie
+touch - Create blank file
+ln - Create shortcuts to other files
+cat - Display file contents on the terminal
+clear - Clear the terminal display
+echo - Print any text that follows the command
+man - Access manual pages for all commands
+tar - extract and compress files
+export - Export environment variables in Linux
+zip - Zip files in Linux
+unzip - Unzip files in Linux
+ssh - Secure Shell command in Linux
+
+
+
+---->Install/uninstall scrapy using apt
+apt-get install scrapy
+sudo apt-get remove scrapy
+
+--->Install/uninstall scrapy using pip
+pip install scrapy
+pip uninstall scrapy
+
+nano <file name>
+CTRL + O saves a Nano file
+CTRL + X exits Nano
+
+sublime text installed
+
+
+to install virtual environment
+pip install virtualenv
+virtualenv <env name>
+source env/bin/activate
+to deactivate env:deactivate
+
+meeting with hr took scerct santa 
