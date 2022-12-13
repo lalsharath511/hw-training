@@ -3,7 +3,7 @@ from datetime import date
 import json
 
 
-class Trackemployee:
+class TrackEmployee:
     tasks = []
     emp_list = []
 
@@ -13,11 +13,11 @@ class Trackemployee:
         print("""click 1 --->registration\nclick 2---> Login""")
         inp = int(input())
         if inp == 1:
-            self.signupfun()
+            self.emp_signup()
         else:
-            self.loginfun()
+            self.emp_login()
 
-    def signupfun(self):
+    def emp_signup(self):
         emp_id = int(input("employee id :"))
         emp_name = input("employee name :")
         vals = {
@@ -25,73 +25,67 @@ class Trackemployee:
             "emp_name": emp_name
         }
         self.emp_list.append(vals)
-        print(self.emp_list)
         self.__init__()
 
-    def loginfun(self):
+    def emp_login(self):
         emp_id_log = int(input("Enter Your Emp Id :"))
 
         for val in self.emp_list:
             if val["emp_id"] == emp_id_log:
                 self.tasks = []
                 print("Login Sucessfull")
-                b = datetime.now().isoformat().replace("T", " ")[0:16]
+                login_time = datetime.now().isoformat().replace("T", " ")[0:16]
                 val.update({
-                    'login_time': b, })
-                inp1 = int(input("Press 1 To Create a task \nPress 2 Logout :"))
+                    'login_time': login_time, })
+                inp1 = int(input("Press 1 To Create a task \n Press 2 Logout :"))
                 if inp1 == 1:
-                    self.addtaskfun(val)
+                    self.add_task(val)
                 else:
                     self.emp_logout(val)
 
-    def addtaskfun(self, val):
+    def add_task(self, val):
         task_title = input("Title of the task :")
         task_description = input("Detailed explanation of the task :")
         start_time = datetime.now().isoformat().replace("T", " ")[0:16]
-        vals = {
+        task_list = {
             "task_title": task_title,
             "task_description": task_description,
             "start_time": start_time,
 
         }
         print("Task create Sucessfully")
-        self.endtaskfun(vals, val)
+        self.end_task(task_list, val)
 
-    def endtaskfun(self, vals, val):
+    def end_task(self, task_list, val):
 
         task_success = input("Task Completed?\n True/False :")
         end_time = datetime.now().isoformat().replace("T", " ")[0:16]
 
-        vals.update({
+        task_list.update({
             "end_time": end_time,
             "task_success": task_success,
         })
-        self.tasks.append(vals)
+        self.tasks.append(task_list)
 
         inp3 = int(input("Press 1 to Add New task / Press 2 to  Logout "))
         if inp3 == 1:
-            self.addtaskfun(val)
+            self.add_task(val)
         elif inp3 == 2:
             self.emp_logout(val)
 
     def emp_logout(self, val):
-        a = datetime.now().isoformat().replace("T", " ")[0:16]
+        logout_time = datetime.now().isoformat().replace("T", " ")[0:16]
         val.update({
-            'logout_time': a,
+            'logout_time': logout_time,
             'tasks': self.tasks,
         })
         print("Logout Successful")
         for i in self.emp_list:
             if i == val:
-                data=i['emp_name']
-                # dict_str=json.dumps(i,indent=1)
-                # filename=f'{data}.json'
-                # file=open(filename,"w")
-                # file.write(dict_str)
-                # self.__init__()
-                with open(f'{data}.json', 'w') as fp:
-                    json.dump(i, fp,indent=1)
+                file_name = i['emp_name']
+                with open(f'{file_name}.json', 'w') as fp:
+                    json.dump(i, fp, indent=1)
                 self.__init__()
-                
 
-Trackemployee()
+
+TrackEmployee()

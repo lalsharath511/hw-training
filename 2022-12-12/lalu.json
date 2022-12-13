@@ -1,0 +1,22 @@
+{
+ "emp_id": 1,
+ "emp_name": "lalu",
+ "login_time": "2022-12-13 09:06",
+ "logout_time": "2022-12-13 09:06",
+ "tasks": [
+  {
+   "task_title": "t1",
+   "task_description": "test",
+   "start_time": "2022-12-13 09:06",
+   "end_time": "2022-12-13 09:06",
+   "task_success": "True"
+  },
+  {
+   "task_title": "t2",
+   "task_description": "test2",
+   "start_time": "2022-12-13 09:06",
+   "end_time": "2022-12-13 09:06",
+   "task_success": "False"
+  }
+ ]
+}

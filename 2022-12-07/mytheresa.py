@@ -45,7 +45,6 @@ def crawl(link1):
         json.dump(data, outfile)
     return
 
-
 def mytheresa(next_page):
     res = requests.get(next_page,
                        headers={
@@ -74,4 +73,4 @@ def mytheresa(next_page):
 
 
 mytheresa('https://www.mytheresa.com/int_en/clothing.html')
-# https://www.mytheresa.com/int_en/clothing.html
+
