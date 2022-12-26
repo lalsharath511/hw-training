@@ -1,0 +1,15 @@
+requests-learned to send requests, familirize with different http headers
+parsel - learned about Selector, CSS and Xpath selectors, getting data using selector
+python regular expressions - usage,search(),findall(),split(),sub(),metacharacters, 
+json - json module,dumps() method , conversion between JSON to python and python to JSON
+csv - reader,writer modules,DictWriter,DictReader converting csv to python dictionary and viceversa.
+pymongo - installed mongodb, tried to connect to the server
+scrapy - introduction,project creation,running of the project,Spider class and its components,response.follow() method.
+Scrapy - Requests,FormRequests,Response,Shell,inspect response,Selector.
+Selenium,js2py,ipython,ast- Read the documentation.
+datetime - read documentation, understads the use of datetime , date,time,time objects
+urllib - read documentation,urllib.request,urllib.error,urllib.parse,urllib.robotparser - modules
+cloudscraper - read documentation understands the working of cloudflare network protection
+os,random - read documentation, done simple programs using these module in the python shell
+xpath - read documentation, understands syntax, functions,
+		how to select xpath of a element, using xpath selects and get the data from the html and xml documents.
