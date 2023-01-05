@@ -5,11 +5,8 @@ import json
 
 class mytheresaScraper:
     data = []
-
-
     def crawl(self,link1):
         res = link1
-
         if res.status_code != 200:
             raise Exception('Failed to load page')
         text = res.text
@@ -68,13 +65,12 @@ class mytheresaScraper:
 
             except:
                 continue
-
         next_page = selector.css('li.next a').xpath('@href').get()
         if next_page is not None:
             self.mytheresa(next_page)
 
 
-    mytheresa('https://www.mytheresa.com/int_en/clothing.html')
+    mytheresa(next_page='https://www.mytheresa.com/int_en/clothing.html')
     
 mytheresaScraper()
 
