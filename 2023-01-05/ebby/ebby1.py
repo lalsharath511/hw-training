@@ -1,6 +1,8 @@
 import requests
 from parsel import Selector
 import csv
+
+
 class Ebby():
 
 	def __init__(self):
@@ -11,7 +13,6 @@ class Ebby():
 		with open('ebby.csv','w') as csvfile:
 			writer = csv.DictWriter(csvfile, fieldnames=self.fields)
 			writer.writeheader()
-
 
 	def parse(self,url):
 		response = requests.get(url=url, headers=self.headers)
@@ -25,6 +26,7 @@ class Ebby():
 		office = selector.xpath('//section[@class="rng-bio-account-content-office"]//strong/text()').extract_first().split('|')
 		address = selector.xpath('//section[@class="rng-bio-account-content-office"]//div[2]/text()').extract_first().strip().replace(',','').split(' ')
 
+
 		first_name = names[0]
 		if len(names) == 3:
 			middle_name = names[1]
@@ -32,12 +34,15 @@ class Ebby():
 		else:
 			middle_name = ""
 			last_name = names[1]
+
 		adrs = ""
 		for adr in address[:-3]:
 			adrs += adr+" "
 
+
 		
 		
+
 		details = {
 		'country': 'United states',
 		'first_name': first_name,
@@ -61,16 +66,26 @@ class Ebby():
 		}
 		with open('ebby.csv','a') as csvfile:
 			writer = csv.DictWriter(csvfile, fieldnames=self.fields)
-			writer.writerow(details) 
-    def parse_link(self, url):
-        response = requests.get(url=url, headers=self.headers)
+			writer.writerow(details)
+
+
+
+	def parse_link(self, url):
+		response = requests.get(url=url, headers=self.headers)
+		print(response.status_code)
 		if response.status_code != 200:
-            raise Exception("Error")
-		else:
-      
-		# for page in range(2,145):
-		# 	next_page = f"https://www.ebby.com/roster/agents/{page}"
-		# 	parse(next_page)
+			raise Exception("Error")
+		selector = Selector(text=response.text)
+		# lalu=selector.xpath()
+		agent_url = selector.xpath("//url/loc/text()").extract()
+
+		# for i in agent_url:
+		#     parse(url)
+		for page in agent_url:
+			# next_page = f"https://www.ebby.com/roster/agents/{page}"
+			parse(page)
+
+
 url = 'file:///home/czone/.cache/.fr-qFx8cC/sitemapbio%20(3).xml'
 ebby = Ebby()
 ebby.parse_link(url)

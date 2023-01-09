@@ -1,13 +1,7 @@
-
-
-
-# links = sitemaps.sitemap_search('https://www.coldwellbanker.com/sitemap_brokers_index.xml')
-# # print(links)
-
-
-
 from parsel import Selector
 import requests
+
+import xml.etree.ElementTree as ET
 
 class ExprealtyScraper:
 
@@ -30,6 +24,10 @@ class ExprealtyScraper:
             
           
     def coldwellbanker(self, url, ):
+        a=url
+        tree = ET.parse('data.xml')
+        root = tree.getroot()
+        print(root.url)
         
         response = requests.get(url=url, headers=self.headers)
         # print(response.text)
